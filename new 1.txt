@@ -1,0 +1,53 @@
+## Docker Tutorial 
+
+docker Container list   # List all containers - same as docker ps -a 
+
+set-variable -Name "FORMAT" -Value "ID\t{{.ID}}\nName\t{{.mes}}\nImage\t{{.Image}}\nPorts\t{{.Ports}}\nCommand\t{{.Command}}\nCreated\t{{.CreatedAt}}\nStatus\t{{.Status}}\n"
+
+docker PS Format command--> docker ps --format=docker ps --format "ID\t{{.ID}}\nName\t{{.Names}}\nImage\t{{.Image}}\nPorts\t{{.Ports}}\nCommand\t{{.Command}}\nCreated\t{{.CreatedAt}}\nStatus\t{{.Status}}\n"
+
+docker container rm $(docker container ls –aq) # remove all containers
+
+docker run --name website -v ${PWD}:/usr/share/nginx/html:ro -d -p 8080:80 nginx:latest # mount windows current directory
+
+docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx:latest # mount linux current directory
+
+docker exec -it website bash # interactive mode
+
+bootstrap single page template - https://startbootstrap.com/themes/landing-pages 
+
+docker build --tag website:latest .  # build an image
+
+npm install --save express
+
+docker tag miram-website:latest miram-website:2 # tagging
+
+## Continual Delivery / Continual Integration Pipeline CD/CI
+## Elastic Beanstalk AWS - Docker Cloud - Kubernetes
+## Private / Public Regestries - Docker Hub - quay.io - Amazon ECR
+
+docker push bentleyj68/miram-website:2 # push to docker hub
+
+docker inspect f4ca4c0a6517
+docker logs -f f4ca4c0a6517
+docker exec -it f4ca4c0a6517
+
+## Kubernetes Tutorial - K8s
+## Master 
+## Node and Pods, Service and Ingress, ConfigMap and Secrets
+## Minikube kubectl
+
+kubectl get nodes    # 
+kubectl get pod      #
+kubectl get services #
+
+kubectl create deployment nginx-depl --image nginx
+kubectl create deployment mongo-depl --image mongo
+kubectl describe pod mongo-depl-5fd6b7d4b4-gmbkt 
+kubectl logs mongo-depl-5fd6b7d4b4-gmbkt
+kubectl exec -it mongo-depl-5fd6b7d4b4-gmbkt -- bin/bash
+kubectl apply -f config-file.yaml
+
+
+
+
